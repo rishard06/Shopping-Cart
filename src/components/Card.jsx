@@ -1,6 +1,6 @@
 import FetchAPI from "./FetchAPI.jsx" 
 import { useEffect, useState } from "react"
-import Quantity from "./Form.jsx";
+import Quantity from "./Quantity.jsx";
 
 export default function Card() {
     const [isLoading, setIsLoading] = useState(false);

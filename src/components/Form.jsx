@@ -1,26 +1,36 @@
-import { useState } from "react";
+import { useState } from "react"
 
-export default function Quantity(props) {
-    const [count, setCount] = useState(0);
+export default function Form(props) {
+    const [showComponent, setShowComponent] = useState(false);
+
+    if(showComponent) {
+        document.querySelector("body").style.overflow = "hidden";
+    }
+    if(!showComponent) {
+        document.querySelector("body").style.overflow = "scroll";
+        document.querySelector("ul").style.padding = "20px"
+    }
     
-        const decreasCount = () => {
-            if (count === 0) return 0
-    
-            setCount(count - 1);
-        }
-    
-        const increaseCount = () => {
-            setCount(count + 1);
-        }
+    const openForm = () => {
+        setShowComponent(true);
+    };
+
+    const closeForm = () => {
+        setShowComponent(false);
+    };
 
     return (
         <>
-            <div key={props.prod.id} className="quantity">
-                <button onClick={() => decreasCount()}>-</button>
-                <p>{count}</p>
-                <button onClick={() => increaseCount()}>+</button>
-            </div>
-            <button >Add to Cart</button>
+            <button onClick={openForm}>Add to Cart</button>
+            {showComponent && 
+                <div className="form">
+                    <div>
+                        <h1>{props.prod.title}</h1>
+                        <img src={props.prod.image} style={{width: "250px"}} alt="" />
+                        <button onClick={closeForm}>close</button>
+                    </div>
+                </div>
+            }
         </>
     )
 }

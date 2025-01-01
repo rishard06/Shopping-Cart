@@ -63,7 +63,7 @@ header {
     cursor: pointer;
 }
 
-.home-page:active, .shop-page:active {
+.home-page:active, .shop-page:active, .card button:active {
     transform: scale(1.1);
 }
 
@@ -80,6 +80,7 @@ header {
     border: none;
     background-color: var(--pale-green);
     cursor: pointer;
+    transition: trasform 1000ms ease-out 200ms;
 }
 
 .quantity {
@@ -94,16 +95,37 @@ header {
     border: 1px solid var(--pale-green);
 }
 
-.loader {
+.form {
     position: absolute;
-    left: 800px;
-    top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(70, 70, 70, 0.425);
+    z-index: 1000;
+}
+
+.form div {
+    background-color: var(--beige);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--purple);
+}
+
+.loader {
+    margin-top: 100px;
     width: 58px;
     height: 58px;
     border: 5px solid var(--purple);
     border-bottom-color: transparent;
     border-radius: 50%;
-    justify-content: center;
+    display: flex;
+    justify-self: center;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
     }
