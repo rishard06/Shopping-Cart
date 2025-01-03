@@ -8,7 +8,7 @@ export default function Card() {
 
     useEffect(() => {
         setIsLoading(true);
-        FetchAPI('https://fakestoreapi.com/products').then((data) => {
+        FetchAPI('https://api.escuelajs.co/api/v1/products?offset=0&limit=40').then((data) => {
             setProducts(data);
             setIsLoading(false);
         }).catch((error) => {
@@ -26,12 +26,13 @@ export default function Card() {
                             <p><strong>{prod.title}</strong></p>
                             <div style={{display: "flex", justifyContent: "space-around", alignItems: "center"}}>
                                 <img 
-                                    src={prod.image} 
-                                    alt="img" 
+                                    src={prod.images} 
+                                    alt={prod.name} 
                                     loading="lazy"
-                                    style={{ width: "130px", height: "150px", objectFit: "scale-down"}} />
+                                    style={{ width: "130px", height: "150px", objectFit: "cover", borderRadius: "10px"}} />
                                 <div>
                                     <p>$ {prod.price}</p>
+                                    {/* <NavLink to={"/shop/cart"}>nav</NavLink> */}
                                     <Quantity prod={prod}/>
                                 </div>
                             </div>

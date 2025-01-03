@@ -47,7 +47,7 @@ header {
     font-weight: bold;
 }
 
-.home-page, .shop-page {
+.home-page, .shop-page, header div {
     font-size: 1.5rem;
     background-color: var(--pale-green);
     border-radius: 10px;
@@ -101,24 +101,59 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 50%;
     left: 50%;
-    /* height: 100%; */
-    /* width: 100%; */
-    /* transform: translate(-50%, -50%); */
-    background-color: rgba(70, 70, 70, 0.425);
+    height: 200%;
+    width: 100%;
+    transform: translate(-50%, -50%);
     z-index: 1000;
 }
 
-.form div {
-    background-color: var(--beige);
+.form .form-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--lighter-pale-green);
     padding: 40px;
+    max-width: 500px;
     border-radius: 20px;
-    border: 1px solid var(--purple);
+    border: 1px solid var(--purple); 
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.form-child div button {
+    margin: 10px 20px;
+    background-color: var(--purple);
+}
+
+.home-div {
+    display: flex;
+    justify-content: space-between;
+    height: 85.2vh;
+}
+
+.home-div div {
+    width: 100%;
+}
+
+.home-div aside {
+    position: relative;
+    height: 100%;
+    width: 500px;
+    background-image: linear-gradient( var(--beige), var(--pale-green));
+    /* overflow-y: scroll; */
+}
+
+.cart {
+    background-color: red;
+    width: 100%;
+    height: 200px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
 .loader {
-    margin-top: 100px;
+    margin-top: 200px;
     width: 58px;
     height: 58px;
     border: 5px solid var(--purple);

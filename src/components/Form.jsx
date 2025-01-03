@@ -1,19 +1,14 @@
 import { useState } from "react"
+import { CSSTransition } from "react-transition-group";
+import { NavLink } from "react-router-dom";
 
 export default function Form(props) {
     const [showComponent, setShowComponent] = useState(false);
-    const [total, setTotal] = useState()
-
-    if(showComponent) {
-        // document.querySelector("body").style.overflow = "hidden";
-    }
-    if(!showComponent) {
-        document.querySelector("body").style.overflow = "scroll";
-        document.querySelector("ul").style.padding = "20px"
-    }
+    const [total, setTotal] = useState();
+    const [count, setCount] = useState();
+    const [confirm, setConfirm] = useState(false);
     
     const openForm = () => {
-        // alert(typeof(props.count))
         calc()
         setShowComponent(true);
     };
@@ -25,24 +20,34 @@ export default function Form(props) {
     const calc = () => {
         if (props.count === 0) {
             setTotal(props.prod.price)
+            setCount(1)
         }else {
             const total = props.count * props.prod.price;
-            // alert(total);
             setTotal(total);
+            setCount(props.count)
         }
+    }
+
+    const handleConfirm = () => {
+        setConfirm(true);
+        setShowComponent(false);
     }
 
     return (
         <>
             <button onClick={openForm}>Add to Cart</button>
-            {showComponent && 
+            {showComponent &&
                 <div className="form">
-                    <div>
+                    <div className="form-child">
                         <h1>{props.prod.title}</h1>
-                        <img src={props.prod.image} style={{width: "250px"}} alt="" />
-                        <p>total amount:    $ {total}</p>
-                        <button onClick={closeForm}>close</button>
+                        <img src={props.prod.images[0]} style={{width: "250px", maxHeight: "400px", objectFit: "cover", borderRadius: "10px"}}/>
+                        <p>quantity: <strong>{count}</strong></p>
+                        <p>total amount: <strong>$ {total}</strong></p>
+                        <div>
+                            <button className="close" onClick={closeForm}>Close</button>
+                            <button className="confirm" onClick={handleConfirm}>Confirm</button>
                     </div>
+                        </div>
                 </div>
             }
         </>
